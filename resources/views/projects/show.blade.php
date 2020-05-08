@@ -7,18 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-
-    <h1>Laravel Testing Playground: Projects</h1>
-
-    @forelse($projects as $project)
-
-        <a href="{{$project->path()}}"><p>Title: {{$project->title}}</p></a>
-
-    @empty
-
-        <p>No projects yet.</p>
-   
-    @endforelse
-
+    <h1>{{$project->title}}</h1>
+    <p>{{$project->description}}</p>
 </body>
 </html>

@@ -25,6 +25,19 @@ class ProjectsTest extends TestCase
         $this->get('/projects')->assertSee($attributes['title']);
     }
 
+    public function test_a_user_can_view_a_project(){
+
+        $this->withoutExceptionHandling();
+
+        $project = factory('App\Project')->create();
+
+        $this->get($project->path())
+            ->assertSee($project->title)
+            ->assertSee($project->description);
+
+
+    }
+
     public function test_a_project_requires_a_title(){
 
         $attributes = factory('App\Project')->raw(['title' => '']);
@@ -32,7 +45,6 @@ class ProjectsTest extends TestCase
         $this->post('/projects', $attributes)->assertSessionHasErrors('title');
     }
 
-    //instead of appending test_ to ever function you can do write the following directive 
 
     public function test_a_project_requires_a_description(){
 
