@@ -12,6 +12,11 @@ class ProjectsController extends Controller
 
         return view('projects.index', compact('projects'));
     }
+
+    public function create(){
+
+        return view('projects.create');
+    }
     
     public function show(Project $project){ 
 
@@ -29,8 +34,9 @@ class ProjectsController extends Controller
             'title' => 'required',
             'description' => 'required'   
             ]);
+          
         
-        //$attributes['owner_id'] = auth()->id();
+        
 
         //persist
         auth()->user()->projects()->create($attributes);
